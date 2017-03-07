@@ -27,7 +27,6 @@ public class Vector{
         this.y += a.y;
         return this;
     }
-
     public static void saveToFile(String filename, Vector vec) throws IOException{
         File outputFile = new File(filename);
         outputFile.createNewFile();
@@ -37,39 +36,32 @@ public class Vector{
         writer.flush();
         writer.close();
     }
-    public static void main(String[] args) throws DifferentVectorsLengthException{
-    {
-    // String s = new String("2.8 1.5");
-        // String digitPattern = "(\\d*\\.?\\d*)\\s(\\d*\\.?\\d*)";
+    public void setData(){
+        String userVectorInput = new String();
+        String digitPattern = "(\\d*\\.?\\d*)\\s(\\d*\\.?\\d*)";
 
-        // Pattern findDoubles = Pattern.compile(digitPattern);
-        // Matcher match = findDoubles.matcher(s);
-        // if (match.find()){
-        //     System.out.println(match.group(0));
-        //     System.out.println(match.group(1));
-        // }
-
-        // Scanner in = new Scanner(System.in);
-        // double x, y;
-        // while(in.hasNext() && in.hasNextDouble()){
-        //     x = in.nextDouble();
-        // }
-
-        // try{
-        //     x = in.nextDouble();
-        //     y = in.nextDouble();
-        // }catch(InputMismatchException e)
-        // {
-        //     System.out.println("Wrong input! Try again.");
-        // }
+        Scanner in = new Scanner(System.in);
+        userVectorInput = in.nextLine();
+        Pattern findDoubles = Pattern.compile(digitPattern);
+        Matcher match = findDoubles.matcher(userVectorInput);
+        if (match.find()){
+            this.x = Double.parseDouble(match.group(1));
+            this.y = Double.parseDouble(match.group(2));
+        }
+        else{
+            System.out.print("Wrond data.");
+        }
     }
-        Vector vec = new Vector(3,4);
-        Vector vec1 = new Vector(3,4);
-        Vector vec2 = new Vector(4,4);
+    public static void main(String[] args) throws DifferentVectorsLengthException{
+
+        Vector vec1 = new Vector();
+        Vector vec2 = new Vector();
+        vec1.setData();
+        vec2.setData();
 
         try{
             if (vec1.length() == vec2.length()){
-                Vector added = new Vector(vec);
+                Vector added = new Vector(vec1);
                 added.print();
                 added.add(vec1);
                 added.print();
