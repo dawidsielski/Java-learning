@@ -38,44 +38,54 @@ public class Vector{
     }
     public void setData(){
         String userVectorInput = new String();
-        String digitPattern = "(\\d*\\.?\\d*)\\s(\\d*\\.?\\d*)";
-
         Scanner in = new Scanner(System.in);
         userVectorInput = in.nextLine();
+
+        String digitPattern = "(\\d+\\.?\\d*)\\s(\\d+\\.?\\d*)";
         Pattern findDoubles = Pattern.compile(digitPattern);
         Matcher match = findDoubles.matcher(userVectorInput);
-        if (match.find()){
-            this.x = Double.parseDouble(match.group(1));
-            this.y = Double.parseDouble(match.group(2));
-        }
-        else{
-            System.out.print("Wrond data.");
+        
+        while(true)
+        {
+            if (match.find()){
+                this.x = Double.parseDouble(match.group(1));
+                this.y = Double.parseDouble(match.group(2));
+                break;
+            }
+            else{
+                System.out.println("Wrong input! Please try again.");
+                userVectorInput = in.nextLine();
+                match = findDoubles.matcher(userVectorInput);
+            }
         }
     }
     public static void main(String[] args) throws DifferentVectorsLengthException{
 
         Vector vec1 = new Vector();
         Vector vec2 = new Vector();
-        vec1.setData();
-        vec2.setData();
 
-        try{
-            if (vec1.length() == vec2.length()){
-                Vector added = new Vector(vec1);
-                added.print();
-                added.add(vec1);
-                added.print();
-                saveToFile("vector.txt", added);
+        do{
+            vec1.setData();
+            vec2.setData();
+            try{
+                if (vec1.length() == vec2.length()){
+                    Vector added = new Vector(vec1);
+                    added.print();
+                    added.add(vec1);
+                    added.print();
+                    saveToFile("vector.txt", added);
+                    break;
+                }
+                else{
+                    throw new DifferentVectorsLengthException(vec1, vec2);
+                }
             }
-            else{
-                throw new DifferentVectorsLengthException();
+            catch (DifferentVectorsLengthException e){
+                System.out.println(e);
             }
-        }
-        catch (DifferentVectorsLengthException e){
-            System.out.println(e);
-        }
-        catch (IOException e){
-            System.out.println(e);
-        }
+            catch (IOException e){
+                System.out.println(e);
+            }
+        }while(true);
     }
 }
