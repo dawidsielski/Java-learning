@@ -66,8 +66,9 @@ public class Vector{
 				break;
 			}
 			catch (DifferentVectorsLengthException e){
-				System.out.println("Vectors have different lengths");
-				System.out.println(e);
+				// System.out.println("Vectors have different lengths");
+				System.out.println("fFirst vector is " + vec1.vectorElements.size() + " in size and second is " + vec2.vectorElements.size() + ".");
+                // System.out.println(e);
 				vec1.setData();
 				vec2.setData();
 			}
