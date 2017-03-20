@@ -1,10 +1,6 @@
 import java.util.*;
 public class AddVector {
-	public static void main (String[] args){
-	}
-	public AddVector(){
-	}
-    public Vector add(Vector a, Vector b) throws DifferentVectorsLengthException{
+    public static Vector add(Vector a, Vector b) throws DifferentVectorsLengthException{
 		if (a.vectorElements.size() != b.vectorElements.size())
 			throw new DifferentVectorsLengthException(a.vectorElements.size(), b.vectorElements.size());
 		Vector added = new Vector();

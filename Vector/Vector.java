@@ -21,15 +21,13 @@ public class Vector{
         while(true){
 				
 			try{
-				AddVector addVector = new AddVector();
-				Vector result = addVector.add(vec1, vec2);
+				Vector result = AddVector.add(vec1, vec2);
 				System.out.println("Added vector" + result.vectorElements);
 				SaveToFile insert = new SaveToFile(result.vectorElements.toString());
 				break;
 			}
 			catch (DifferentVectorsLengthException e){
-				System.out.println(e);
-				e.printVectorLength();
+				System.out.println(e.differentVectorLengthError());
                 System.out.println("Please reenter your vectors.");
                 vec1.vectorElements.clear();
                 vec2.vectorElements.clear();
