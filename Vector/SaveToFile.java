@@ -1,6 +1,5 @@
 import java.io.*;
 public class SaveToFile{
-	
 	public SaveToFile(String vec) throws IOException{
         File outputFile = new File("vector.txt");
         outputFile.createNewFile();

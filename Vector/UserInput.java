@@ -10,7 +10,8 @@ public class UserInput{
         Scanner in = new Scanner(System.in);
         Scanner findDoubles;
         double element = 0;
-        while(true){
+        boolean ifEndOfLine = false;
+        while(!ifEndOfLine){
             userVectorInput = in.nextLine();
             findDoubles = new Scanner(userVectorInput);
             try {
@@ -30,7 +31,7 @@ public class UserInput{
                 }
             }
             catch (NoSuchElementException e){
-                break;
+                ifEndOfLine = true;
             }
         }
         return this.listElements;
