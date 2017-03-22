@@ -1,11 +1,14 @@
 public abstract class TelephoneEntry{
+    protected TelephoneNumber telephoneNumber;
 
-    void abstract description(){
-        
+    public TelephoneEntry(TelephoneNumber telephoneNumber){
+        this.telephoneNumber = telephoneNumber;
     }
-
-
-    public static main(String[] args){
-        
+    public TelephoneEntry(){
+        this.telephoneNumber = new TelephoneNumber();
     }
+    public TelephoneNumber getTelephoneNumber(){
+        return this.telephoneNumber;
+    }
+    public abstract String description();
 }

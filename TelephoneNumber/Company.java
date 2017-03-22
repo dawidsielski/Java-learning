@@ -1,9 +1,15 @@
 public class Company extends TelephoneEntry{
-    String name = new String();
-    String address = new String();
-    TelephoneEntry telephone = new TelephoneEntry();
-    
-    public static main(String[] args){
-        
+    private String name;
+    private String address;
+
+    public Company(){
+    }
+    public Company(String name, String address, TelephoneNumber telephoneNumber){
+        this.name = name;
+        this.address = address;
+        this.telephoneNumber = telephoneNumber;
+    }
+    public String description(){
+        return ("Name: " + this.name + " Address: " + this.address);
     }
 }
